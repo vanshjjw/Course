@@ -1,0 +1,9 @@
+Latent Size: 4, Learning Loss: 0.0306, Validation Loss: 0.0314
+Latent Size: 6, Learning Loss: 0.0266, Validation Loss: 0.0276
+Latent Size: 8, Learning Loss: 0.0236, Validation Loss: 0.0244
+Latent Size: 10, Learning Loss: 0.0209, Validation Loss: 0.0214
+Latent Size: 12, Learning Loss: 0.0171, Validation Loss: 0.0176
+Latent Size: 14, Learning Loss: 0.0207, Validation Loss: 0.0215
+Latent Size: 16, Learning Loss: 0.0143, Validation Loss: 0.0147
+Latent Size: 18, Learning Loss: 0.0122, Validation Loss: 0.0125
+Latent Size: 20, Learning Loss: 0.0143, Validation Loss: 0.0149
