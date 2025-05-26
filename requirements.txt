@@ -1,3 +1,4 @@
 torch~=2.7.0
 matplotlib~=3.10.1
 torchvision~=0.22.0+cu118
+numpy~=2.2.5
