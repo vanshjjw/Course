@@ -2,10 +2,9 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
+
+
 class Autoencoder(nn.Module):
-    """
-    Standard Autoencoder for dimensionality reduction using PyTorch.
-    """
     def __init__(self, input_dim, latent_dim):
         super(Autoencoder, self).__init__()
         self.encoder = nn.Sequential(
@@ -29,9 +28,6 @@ class Autoencoder(nn.Module):
         return decoded
 
 class VAE(nn.Module):
-    """
-    Variational Autoencoder for generating new data points using PyTorch.
-    """
     def __init__(self, input_dim, latent_dim):
         super(VAE, self).__init__()
         self.input_dim = input_dim
@@ -70,9 +66,6 @@ class VAE(nn.Module):
         return self.decode(z), mu, logvar
 
     def generate(self, n_samples=1):
-        """
-        Generate new samples from the latent space.
-        """
         # Set model to evaluation mode
         self.eval()
         with torch.no_grad():
@@ -82,13 +75,7 @@ class VAE(nn.Module):
 
 
 def vae_loss_function(recon_x, x, mu, logvar, beta=1.0):
-    """
-    VAE loss function = Reconstruction loss + beta * KL-Divergence
-    """
-    # Using Mean Squared Error for reconstruction loss
-    recon_loss = F.mse_loss(recon_x, x.view(-1, x.shape[1]), reduction='sum')
+    reconstruction_loss = F.mse_loss(recon_x, x.view(-1, x.shape[1]), reduction='sum')
+    kl_divergence_loss = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
     
-    # KL-Divergence
-    kld_loss = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
-    
-    return recon_loss + beta * kld_loss 
+    return reconstruction_loss + beta * kl_divergence_loss
